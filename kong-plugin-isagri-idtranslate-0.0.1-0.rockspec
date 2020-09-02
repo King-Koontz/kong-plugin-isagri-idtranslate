@@ -1,8 +1,8 @@
-package = "kong-plugin-isagri-idtranslate"
+package = "kong-plugin-isagri-translate"
 version = "0.0.1-0"
 
 source = {
-  url = "git://github.com/King-Koontz/kong-plugin-isagri-idtranslate",
+  url = "git://github.com/Kong/kong-plugin-isagri-idtranslate",
   tag = "0.0.1"
 }
 
@@ -17,7 +17,7 @@ build = {
   modules = {
     ["kong.plugins.isagri-idtranslate.migrations.cassandra"] = "kong/plugins/isagri-idtranslate/migrations/cassandra.lua",
     ["kong.plugins.isagri-idtranslate.migrations.postgres"] = "kong/plugins/isagri-idtranslate/migrations/postgres.lua",
-    ["kong.plugins.isagri-idtranslate.migrations.common"] = "kong/plugins/isagri-idtranslate/migrations/common.lua",
+    ["kong.plugins.isagri-idtranslater.migrations.common"] = "kong/plugins/isagri-idtranslate/migrations/common.lua",
     ["kong.plugins.isagri-idtranslate.handler"] = "kong/plugins/isagri-idtranslate/handler.lua",
     ["kong.plugins.isagri-idtranslate.access"] = "kong/plugins/isagri-idtranslate/access.lua",
     ["kong.plugins.isagri-idtranslate.schema"] = "kong/plugins/isagri-idtranslate/schema.lua",

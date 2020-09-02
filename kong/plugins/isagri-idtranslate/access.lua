@@ -149,11 +149,11 @@ local function iter(config_array)
 
     local res, err = param_value(current_value, config_array)
     if err then
-      return error("[request-transformer] failed to render the template ",
+      return error("[isagri-idtranslate] failed to render the template ",
         current_value, ", error:", err)
     end
 
-    kong.log.debug("[request-transformer] template `", current_value,
+    kong.log.debug("[isagri-idtranslate] template `", current_value,
       "` rendered to `", res, "`")
 
     return i, current_name, res
@@ -492,11 +492,11 @@ local function transform_uri(conf)
 
     local res, err = param_value(conf.replace.uri, conf.replace)
     if err then
-      error("[request-transformer] failed to render the template " ..
+      error("[isagri-idtranslate] failed to render the template " ..
         tostring(conf.replace.uri) .. ", error:" .. err)
     end
 
-    kong.log.debug(DEBUG, "[request-transformer] template `", conf.replace.uri,
+    kong.log.debug(DEBUG, "[isagri-idtranslate] template `", conf.replace.uri,
       "` rendered to `", res, "`")
 
     if res then
