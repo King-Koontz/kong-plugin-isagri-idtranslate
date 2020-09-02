@@ -1,4 +1,4 @@
-package = "kong-plugin-isagri-translate"
+package = "kong-plugin-isagri-idtranslate"
 version = "0.0.1-0"
 
 source = {
@@ -6,7 +6,7 @@ source = {
   tag = "0.0.1"
 }
 
-supported_platforms = {"linux", "macosx"}
+supported_platforms = {"linux", "macosx", "win32"}
 description = {
   summary = "Kong Isagri Translate Id Plugin",
   license = "Apache 2.0",
