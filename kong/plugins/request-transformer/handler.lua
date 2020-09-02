@@ -1,15 +1,15 @@
 local access = require "kong.plugins.request-transformer.access"
 
 
-local RequestTransformerHandler = {
+local IsagriIdTranslateHandler = {
   VERSION  = "0.0.01",
   PRIORITY = 801,
 }
 
 
-function RequestTransformerHandler:access(conf)
+function IsagriIdTranslateHandler:access(conf)
   access.execute(conf)
 end
 
 
-return RequestTransformerHandler
+return IsagriIdTranslateHandler
