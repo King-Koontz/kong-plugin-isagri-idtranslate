@@ -111,7 +111,7 @@ table.insert(colon_strings_array_record_plus_uri.fields, uri)
 
 
 return {
-  name = "request-transformer",
+  name = "isagri-idtranslate",
   fields = {
     { config = {
         type = "record",
