@@ -1,4 +1,4 @@
-local access = require "kong.plugins.isagri-translate.access"
+local access = require "kong.plugins.isagri-idtranslate.access"
 
 
 local IsagriIdTranslateHandler = {
