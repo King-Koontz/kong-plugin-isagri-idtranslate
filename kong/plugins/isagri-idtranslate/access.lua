@@ -506,12 +506,36 @@ local function transform_uri(conf)
 end
 
 function _M.execute(conf)
-  clear_environment()
-  transform_uri(conf)
-  transform_method(conf)
-  transform_headers(conf)
-  transform_body(conf)
-  transform_querystrings(conf)
+  -- clear_environment()
+  -- transform_uri(conf)
+  -- transform_method(conf)
+  -- transform_headers(conf)
+  -- transform_body(conf)
+  -- transform_querystrings(conf)
+
+  local args = get_uri_args()
+  for key, val in pairs(args) do
+    kong.log.debug(DEBUG, "arg: ", key, " : ", val)
+  end
+
+  local headers = get_headers()
+  for key, val in pairs(headers) do
+    kong.log.debug(DEBUG, "header: ", key, " : ", val)
+  end
+
+  -- for key, val in pairs(args) do
+  --   if type(val) == "table" then
+  --     ngx.say(key, ": ", table.concat(val, ", "))
+  --   else
+  --     ngx.say(key, ": ", val)
+  --   end
+  -- end
+
+  --local http = require("socket.http")
+  --local cjson = require("cjson")
+  local requestString = "http://isagritestsd.azure-api.net/is-ad/versions?apiVersion=",args['V1'],"&domainID=Client1",headers['domainID']
+  --local body, code = http.request(requestString)
+  --local jsonDict = cjson.decode(body)
 end
 
 return _M
