@@ -534,6 +534,7 @@ function _M.execute(conf)
   --local http = require("socket.http")
   --local cjson = require("cjson")
   local requestString = "http://isagritestsd.azure-api.net/is-ad/versions?apiVersion=",args['V1'],"&domainID=Client1",headers['domainID']
+  kong.log.debug(DEBUG, "requete: ", requestString)
   --local body, code = http.request(requestString)
   --local jsonDict = cjson.decode(body)
 end
