@@ -564,11 +564,33 @@ function _M.execute(conf)
   kong.log.debug("json result: ", body)
   kong.log.debug("json message: ", messageISAD)
 
+  local versiontoget = nil
+
   for token in string.gmatch(messageISAD, "[^,]+") do
     kong.log.debug("message V: ", token)
+
+    requestString = "http://isagritestsd.azure-api.net/is-ad/versions?apiVersion="..apiVersion.."&domainID="..domainID
+    kong.log.debug("requete: ", requestString)
+      
   end
 
+  local i=0
+  local t={}
+
   --Path = /api/GC/VA/factures
+  for token in string.gmatch(path, "[^/]+") do
+    t[i] = token
+    i = i + 1
+  end
+
+  for index = 0, i do
+    kong.log.debug("path: ", index, " : ", t[index])
+  end
+
+  for token in string.gmatch(messageISAD, "[^,]+") do
+
+  end
+
   kong.service.request.set_path("/GC/VA/factures") 
 
 end
