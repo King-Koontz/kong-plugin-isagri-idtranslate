@@ -531,6 +531,15 @@ function _M.execute(conf)
   local apiVersion = kong.request.get_query_arg("apiVersion")
   kong.log.debug("arg: apiVersion = ", apiVersion)
 
+  if apiVersion == nil then
+    apiVersion = "V1"
+  end
+
+  local path = kong.request.get_path()
+  kong.log.debug("path: ", path)
+
+  local vers = path:match("\\[V%d]\\") 
+
   -- for key, val in pairs(args) do
   --   if type(val) == "table" then
   --     ngx.say(key, ": ", table.concat(val, ", "))
@@ -545,8 +554,12 @@ function _M.execute(conf)
   local body, code = http.request(requestString)
   local jsonDict = cjson.decode(body)
 
+  local messageISAD = jsonDict.message
   kong.log.debug("json result: ", body)
-  kong.log.debug("json message: ", jsonDict.message)
+  kong.log.debug("json message: ", messageISAD)
+
+
+
 end
 
 return _M
