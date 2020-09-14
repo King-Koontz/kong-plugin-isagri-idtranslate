@@ -531,10 +531,6 @@ function _M.execute(conf)
   local apiVersion = kong.request.get_query_arg("apiVersion")
   kong.log.debug("arg: apiVersion = ", apiVersion)
 
-  if apiVersion == nil then
-    apiVersion = "V1"
-  end
-
   local path = kong.request.get_path()
   kong.log.debug("path: ", path)
 
@@ -544,10 +540,13 @@ function _M.execute(conf)
   --kong.log.debug("vers2: ", vers)
   --vers = path:match("[V%d]") 
   --kong.log.debug("vers3: ", vers)
-  vers = string.sub(vers, 2, -1)
-  kong.log.debug("vers: ", vers)
+  apiVersion = string.sub(vers, 2, -2)
+  kong.log.debug("path vers: ", apiVersion)
   
-  -- for key, val in pairs(args) do
+  if apiVersion == nil then
+    apiVersion = "V1"
+  end
+    -- for key, val in pairs(args) do
   --   if type(val) == "table" then
   --     ngx.say(key, ": ", table.concat(val, ", "))
   --   else
@@ -565,7 +564,9 @@ function _M.execute(conf)
   kong.log.debug("json result: ", body)
   kong.log.debug("json message: ", messageISAD)
 
-
+  for token in string.gmatch(messageISAD, "[^,]+") do
+    kong.log.debug("message V: ", token)
+  end
 
 end
 
