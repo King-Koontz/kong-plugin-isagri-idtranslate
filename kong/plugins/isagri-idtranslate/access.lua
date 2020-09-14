@@ -546,7 +546,7 @@ function _M.execute(conf)
   local jsonDict = cjson.decode(body)
 
   kong.log.debug("json result: ", body)
-  kong.log.debug("json decode result: ", jsonDict)
+  kong.log.debug("json message: ", jsonDict.message)
 end
 
 return _M
