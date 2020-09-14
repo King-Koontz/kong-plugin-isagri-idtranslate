@@ -588,18 +588,18 @@ function _M.execute(conf)
   end
 
   index = 0;
-  while t[index] != "api" and index<i do
+  while t[index] ~= "api" and index<i do
     index = index + 1
   end
 
-  local produit=nil
+  local produit = nil
   local service = nil
 
   if index <i then
     produit = t[index+1]
     
     index = index+2
-    while t[index] != apiVersion and index<i do
+    while t[index] ~= apiVersion and index<i do
       index = index + 1
     end
 
