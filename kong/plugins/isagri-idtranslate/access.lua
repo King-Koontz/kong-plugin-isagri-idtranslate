@@ -538,8 +538,8 @@ function _M.execute(conf)
   --   end
   -- end
 
-  --local http = require("socket.http")
-  --local cjson = require("cjson")
+  local http = require("socket.http")
+  local cjson = require("cjson")
   local requestString = "http://isagritestsd.azure-api.net/is-ad/versions?apiVersion="..apiVersion.."&domainID="..domainID
   kong.log.debug("requete: ", requestString)
   
