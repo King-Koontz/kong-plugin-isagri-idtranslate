@@ -568,6 +568,9 @@ function _M.execute(conf)
     kong.log.debug("message V: ", token)
   end
 
+  --Path = /api/GC/VA/factures
+  kong.service.request.set_path("/GC/VA/factures") 
+
 end
 
 return _M
