@@ -618,7 +618,7 @@ function _M.execute(conf)
   end
 
   kong.log.debug("produit: ", produit)
-  kong.log.debug("service: ", produit)
+  kong.log.debug("service: ", service)
 
 
   for token in string.gmatch(messageISAD, "[^,]+") do
