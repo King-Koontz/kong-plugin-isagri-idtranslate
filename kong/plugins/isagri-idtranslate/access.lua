@@ -606,7 +606,13 @@ function _M.execute(conf)
 
     if index <i then
       for x=index+1, i do
-        service = service + "/" + t[x]
+        if service==nil then
+          service=t[x]
+        else
+          if t[x] ~=nil then
+            service = service + "/" + t[x]
+          end
+        end
       end
     end
   end
