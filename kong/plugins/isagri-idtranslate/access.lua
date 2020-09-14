@@ -515,12 +515,12 @@ function _M.execute(conf)
 
   local args = get_uri_args()
   for key, val in pairs(args) do
-    kong.log.debug(DEBUG, "arg: ", key, " : ", val)
+    kong.log.debug("arg: ", key, " : ", val)
   end
 
   local headers = get_headers()
   for key, val in pairs(headers) do
-    kong.log.debug(DEBUG, "header: ", key, " : ", val)
+    kong.log.debug("header: ", key, " : ", val)
   end
 
   -- for key, val in pairs(args) do
@@ -533,8 +533,9 @@ function _M.execute(conf)
 
   --local http = require("socket.http")
   --local cjson = require("cjson")
-  local requestString = "http://isagritestsd.azure-api.net/is-ad/versions?apiVersion=",args['V1'],"&domainID=Client1",headers['domainID']
-  kong.log.debug(DEBUG, "requete: ", requestString)
+  local requestString = "http://isagritestsd.azure-api.net/is-ad/versions?apiVersion="..args['V1'].."&domainID=Client1"..headers['domainID']
+  kong.log.debug("requete: ", requestString)
+  print(requestString)
   --local body, code = http.request(requestString)
   --local jsonDict = cjson.decode(body)
 end
