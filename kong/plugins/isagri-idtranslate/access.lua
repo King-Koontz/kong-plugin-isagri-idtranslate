@@ -609,7 +609,6 @@ function _M.execute(conf)
           if t[x] ~=nil then
             service = service + "/" + t[x]
           end
-        end
       end
     end
   end
