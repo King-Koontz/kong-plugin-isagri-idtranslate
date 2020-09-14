@@ -576,7 +576,7 @@ function _M.execute(conf)
 
   local i=0
   local t={}
-  mocal index=0
+  local index=0
 
   --Path = /api/GC/VA/factures
   for token in string.gmatch(path, "[^/]+") do
