@@ -587,6 +587,33 @@ function _M.execute(conf)
     kong.log.debug("path: ", index, " : ", t[index])
   end
 
+  index = 0;
+  while t[index] != "api" and index<i do
+    index = index + 1
+  end
+
+  local produit=nil
+  local service = nil
+
+  if index <i then
+    produit = t[index+1]
+    
+    index = index+2
+    while t[index] != apiVersion and index<i do
+      index = index + 1
+    end
+
+    if index <i then
+      for x=index+1, i do
+        service = service + "/" + t[x]
+      end
+    end
+  end
+
+  kong.log.debug("produit: ", produit)
+  kong.log.debug("service: ", produit)
+
+
   for token in string.gmatch(messageISAD, "[^,]+") do
 
   end
