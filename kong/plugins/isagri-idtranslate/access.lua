@@ -538,13 +538,15 @@ function _M.execute(conf)
   local path = kong.request.get_path()
   kong.log.debug("path: ", path)
 
-  local vers = path:match("\\V%d\\") 
+  local vers = path:match("/V%d/") 
   kong.log.debug("vers: ", vers)
-  vers = path:match("V%d") 
-  kong.log.debug("vers2: ", vers)
-  vers = path:match("[V%d]") 
-  kong.log.debug("vers3: ", vers)
-
+  --vers = path:match("V%d") 
+  --kong.log.debug("vers2: ", vers)
+  --vers = path:match("[V%d]") 
+  --kong.log.debug("vers3: ", vers)
+  vers = string.sub(vers, 2, -1)
+  kong.log.debug("vers: ", vers)
+  
   -- for key, val in pairs(args) do
   --   if type(val) == "table" then
   --     ngx.say(key, ": ", table.concat(val, ", "))
