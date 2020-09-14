@@ -539,6 +539,7 @@ function _M.execute(conf)
   kong.log.debug("path: ", path)
 
   local vers = path:match("\\[V%d]\\") 
+  kong.log.debug("vers: ", vers)
 
   -- for key, val in pairs(args) do
   --   if type(val) == "table" then
