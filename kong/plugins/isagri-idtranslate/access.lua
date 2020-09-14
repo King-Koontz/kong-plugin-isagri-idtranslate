@@ -528,7 +528,7 @@ function _M.execute(conf)
   kong.log.debug("header: domainID = ", domainID)
 
   local apiVersion = kong.request.get_query_arg("apiVersion")
-  kong.log.debug("headerarg: apiVersion = ", apiVersion)
+  kong.log.debug("arg: apiVersion = ", apiVersion)
 
   -- for key, val in pairs(args) do
   --   if type(val) == "table" then
@@ -542,9 +542,11 @@ function _M.execute(conf)
   --local cjson = require("cjson")
   local requestString = "http://isagritestsd.azure-api.net/is-ad/versions?apiVersion="..apiVersion.."&domainID="..domainID
   kong.log.debug("requete: ", requestString)
-  print(requestString)
-  --local body, code = http.request(requestString)
-  --local jsonDict = cjson.decode(body)
+  
+  local body, code = http.request(requestString)
+  local jsonDict = cjson.decode(body)
+
+  kong.log.debug("json result: ", jsonDict)
 end
 
 return _M
