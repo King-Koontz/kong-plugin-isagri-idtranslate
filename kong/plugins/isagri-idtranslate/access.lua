@@ -594,7 +594,7 @@ function _M.execute(conf)
   end
 
   local produit = nil
-  local service = nil
+  local service = ""
 
   if index <i then
     produit = t[index+1]
@@ -606,9 +606,6 @@ function _M.execute(conf)
 
     if index <i then
       for x=index+1, i do
-        if service==nil then
-          service=t[x]
-        else
           if t[x] ~=nil then
             service = service + "/" + t[x]
           end
