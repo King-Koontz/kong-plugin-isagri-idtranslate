@@ -564,7 +564,7 @@ function _M.execute(conf)
   kong.log.debug("json result: ", body)
   kong.log.debug("json message: ", messageISAD)
 
-  local versiontoget = nil
+  local versiontoget = ""
 
   local i=0
   local t={}
@@ -623,8 +623,12 @@ function _M.execute(conf)
     kong.log.debug("json message: ", messageState) 
     
     if messageState=="OK" then
+      kong.log.debug("message ok")
       versiontoget = token
-    end
+    end else
+      kong.log.debug("message nok")
+
+    kong.log.debug("json versionToGet: ", versiontoget)
   end
 
   kong.log.debug("json versionToGet: ", versiontoget)
