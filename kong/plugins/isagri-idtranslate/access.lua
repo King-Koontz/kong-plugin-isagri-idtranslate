@@ -630,7 +630,8 @@ function _M.execute(conf)
   kong.log.debug("json versionToGet: ", versiontoget)
   kong.log.debug("json servicePath: ", "/"..produit.."/"..versiontoget..service)
 
-  kong.service.request.set_path("/"..produit.."/"..versiontoget..service)
+  --kong.service.request.set_path("/"..produit.."/"..versiontoget..service)
+  kong.service.request.set_path("/GC/VA/factures")
   --kong.service.request.add_header("servicePath", "/"..produit.."/"..versiontoget..service)
 
 end
