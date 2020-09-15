@@ -566,14 +566,6 @@ function _M.execute(conf)
 
   local versiontoget = nil
 
-  for token in string.gmatch(messageISAD, "[^,]+") do
-    kong.log.debug("message V: ", token)
-
-    requestString = "http://isagritestsd.azure-api.net/is-ad/versions?apiVersion="..apiVersion.."&domainID="..domainID
-    kong.log.debug("requete: ", requestString)
-      
-  end
-
   local i=0
   local t={}
   local index=0
@@ -618,10 +610,25 @@ function _M.execute(conf)
 
 
   for token in string.gmatch(messageISAD, "[^,]+") do
+    kong.log.debug("message V: ", token)
 
+    requestString = "http://isagritestsd.azure-api.net/"..produit.."/"..token.."/state?&domainID="..domainID
+    kong.log.debug("requete state : ", requestString)
+    
+    local body, code = http.request(requestString)
+    local jsonDict = cjson.decode(body)
+
+    local messageState = jsonDict.message
+    kong.log.debug("json result: ", body)
+    kong.log.debug("json message: ", messageState) 
+    
+    if messageState=="OK" then
+      versiontoget = token
+    end
   end
 
-  kong.service.request.set_path("/GC/VA/factures") 
+  kong.service.request.set_path("/"..produit.."/"..versiontoget..service)
+  kong.service.request.set_header("servicePath", "/"..produit.."/"..versiontoget..service)
 
 end
 
