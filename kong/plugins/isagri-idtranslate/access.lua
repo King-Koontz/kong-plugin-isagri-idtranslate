@@ -625,9 +625,10 @@ function _M.execute(conf)
     if messageState=="OK" then
       kong.log.debug("message ok")
       versiontoget = token
-    end else
+    else
       kong.log.debug("message nok")
-
+    end
+    
     kong.log.debug("json versionToGet: ", versiontoget)
   end
 
