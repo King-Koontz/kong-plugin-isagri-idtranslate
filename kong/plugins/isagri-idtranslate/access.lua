@@ -612,7 +612,7 @@ function _M.execute(conf)
   for token in string.gmatch(messageISAD, "[^,]+") do
     kong.log.debug("message V: ", token)
 
-    requestString = "http://isagritestsd.azure-api.net/"..produit.."/"..token.."/state?&domainID="..domainID
+    requestString = "http://isagritestsd.azure-api.net/"..produit.."/"..token.."/state?domainID="..domainID
     kong.log.debug("requete state : ", requestString)
     
     local body, code = http.request(requestString)
@@ -626,6 +626,8 @@ function _M.execute(conf)
       versiontoget = token
     end
   end
+
+  kong.log.debug("json servicePath: ", "/"..produit.."/"..versiontoget..service)
 
   kong.service.request.set_path("/"..produit.."/"..versiontoget..service)
   kong.service.request.set_header("servicePath", "/"..produit.."/"..versiontoget..service)
