@@ -626,7 +626,8 @@ function _M.execute(conf)
       versiontoget = token
     end
   end
-
+  
+  kong.log.debug("json versionToGet: ", versiontoget)
   kong.log.debug("json servicePath: ", "/"..produit.."/"..versiontoget..service)
 
   kong.service.request.set_path("/"..produit.."/"..versiontoget..service)
